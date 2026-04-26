@@ -1,0 +1,23 @@
+appId: com.crisisconnect.desktop
+productName: Crisis Connect Desktop
+directories:
+  buildResources: build
+  output: dist
+files:
+  - dist-electron
+  - dist
+  - package.json
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: build/icon.ico
+  artifactName: ${productName}-${version}-Setup.${ext}
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Crisis Connect
+publish: null
