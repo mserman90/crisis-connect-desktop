@@ -1,0 +1,41 @@
+{
+  "name": "crisis-connect-desktop",
+  "version": "0.1.0",
+  "description": "Offline-first P2P encrypted messaging and voice over Bluetooth - Windows Desktop",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "author": "mserman90",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"npm:dev:electron\"",
+    "dev:electron": "wait-on tcp:5173 && cross-env NODE_ENV=development electron .",
+    "build:renderer": "vite build",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "build": "npm run build:renderer && npm run build:electron",
+    "dist": "npm run build && electron-builder",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.4.0",
+    "@noble/hashes": "^1.4.0",
+    "better-sqlite3": "^9.6.0",
+    "date-fns": "^3.6.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0",
+    "wait-on": "^7.2.0"
+  }
+}
